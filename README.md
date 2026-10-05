@@ -37,12 +37,25 @@ git push -u origin main
 
 ### Шаг 3. Включите GitHub Pages
 1. Откройте ваш репозиторий на GitHub.
-2. Перейдите во вкладку **Settings** (Настройки) ⚙️.
+2. Перейдите во вкладку **Settings** (Настройки ⚙️).
 3. В левом меню нажмите на раздел **Pages**.
 4. В блоке **"Build and deployment"** в выпадающем списке **Source** выберите **"GitHub Actions"**.
 *(В репозитории уже настроен автоматический файл `.github/workflows/deploy.yml`)*
-5. Через 1-2 минуты GitHub автоматически соберет проект и вверху появится ссылка:
+5. **Важно (Права на запуск)**: В меню **Settings ➔ Actions ➔ General** прокрутите вниз до блока **Workflow permissions** и убедитесь, что выбрано **Read and write permissions**.
+6. Через 1-2 минуты GitHub автоматически соберет проект и вверху появится ссылка:
    `https://ВАШ_АККАУНТ.github.io/ВАШ_РЕПОЗИТОРИЙ/`
+
+---
+
+### ❓ Что делать, если при первой сборке возник красный крестик (Failed):
+1. Убедитесь, что в **Settings ➔ Pages ➔ Source** выбрано именно **GitHub Actions**, а не *Deploy from a branch*.
+2. В терминале отправьте обновленный файл workflow:
+   ```bash
+   git add .
+   git commit -m "fix: update workflow and dependencies"
+   git push
+   ```
+3. Во вкладке **Actions** нажмите кнопку **"Re-run all jobs"** (Перезапустить). Сборка станет зелёной!
 
 ---
 

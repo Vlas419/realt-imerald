@@ -110,6 +110,24 @@ git push -u origin main`,
             </div>
           </div>
 
+          {/* Troubleshooting for red failed workflow */}
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 space-y-2">
+            <h4 className="font-bold text-amber-950 text-xs flex items-center gap-1.5">
+              <span>⚠️ Если при первой сборке появился красный крестик (Failed):</span>
+            </h4>
+            <ul className="space-y-1 text-[11px] text-amber-900 list-disc pl-4 leading-relaxed">
+              <li>
+                В репозитории GitHub перейдите в <strong>Settings ➔ Pages</strong> и убедитесь, что в поле <strong>Source</strong> выбрано именно <strong>GitHub Actions</strong> (а не Deploy from a branch).
+              </li>
+              <li>
+                В <strong>Settings ➔ Actions ➔ General</strong> в самом низу в <strong>Workflow permissions</strong> выберите <strong>Read and write permissions</strong>.
+              </li>
+              <li>
+                В терминале отправьте исправленные файлы: <code className="bg-amber-100 px-1 py-0.5 rounded font-mono">git add . && git commit -m &quot;fix workflow&quot; && git push</code>, затем нажмите <strong>Re-run all jobs</strong>.
+              </li>
+            </ul>
+          </div>
+
           {/* Steps */}
           <div className="space-y-5">
             {steps.map((s, idx) => (
