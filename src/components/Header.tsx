@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Heart, Scale, PlusCircle, HelpCircle, Menu, X } from 'lucide-react';
+import { Heart, Scale, PlusCircle, Menu, X } from 'lucide-react';
 import { RealtLogo } from './RealtLogo';
 import { Currency } from '../types/property';
 
@@ -11,8 +11,6 @@ interface HeaderProps {
   onOpenFavorites: () => void;
   onOpenCompare: () => void;
   onOpenAddListing: () => void;
-  onOpenMortgage: () => void;
-  onOpenGitHubGuide: () => void;
   onScrollToCatalog: () => void;
   onScrollToMap: () => void;
 }
@@ -25,8 +23,6 @@ export function Header({
   onOpenFavorites,
   onOpenCompare,
   onOpenAddListing,
-  onOpenMortgage,
-  onOpenGitHubGuide,
   onScrollToCatalog,
   onScrollToMap,
 }: HeaderProps) {
@@ -49,7 +45,7 @@ export function Header({
             <RealtLogo />
           </a>
 
-          {/* Zone 2: 4–6 nav links, 1–2 word labels, single-line text with subtle hover underlines */}
+          {/* Zone 2: nav links, clean portal navigation */}
           <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
             <button
               onClick={onScrollToCatalog}
@@ -62,12 +58,6 @@ export function Header({
               className="hover:text-slate-950 transition-colors cursor-pointer whitespace-nowrap"
             >
               Карта объектов
-            </button>
-            <button
-              onClick={onOpenMortgage}
-              className="hover:text-slate-950 transition-colors cursor-pointer whitespace-nowrap"
-            >
-              Кредитный калькулятор
             </button>
             <button
               onClick={onOpenFavorites}
@@ -93,13 +83,6 @@ export function Header({
                 </span>
               </button>
             )}
-            <button
-              onClick={onOpenGitHubGuide}
-              className="flex items-center gap-1 hover:text-emerald-700 text-emerald-600 transition-colors cursor-pointer whitespace-nowrap"
-            >
-              <HelpCircle className="w-3.5 h-3.5" />
-              <span>GitHub Pages</span>
-            </button>
           </nav>
 
           {/* Zone 3: 1–2 primary actions */}
@@ -173,15 +156,6 @@ export function Header({
           <button
             onClick={() => {
               setMobileMenuOpen(false);
-              onOpenMortgage();
-            }}
-            className="block w-full text-left py-2 text-slate-700 hover:text-slate-950"
-          >
-            Кредитный калькулятор
-          </button>
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
               onOpenFavorites();
             }}
             className="flex items-center justify-between w-full py-2 text-slate-700 hover:text-slate-950"
@@ -201,15 +175,6 @@ export function Header({
               <span className="font-mono text-xs tabular-nums text-slate-500">{compareCount}</span>
             </button>
           )}
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onOpenGitHubGuide();
-            }}
-            className="block w-full text-left py-2 text-emerald-700 font-semibold"
-          >
-            Инструкция по GitHub Pages
-          </button>
           <div className="pt-2">
             <button
               onClick={() => {

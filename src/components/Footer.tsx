@@ -1,16 +1,12 @@
 import { RealtLogo } from './RealtLogo';
-import { Globe, Heart, Shield, HelpCircle, ArrowUp } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 
 interface FooterProps {
-  onOpenGitHubGuide: () => void;
-  onOpenMortgage: () => void;
   onOpenAddListing: () => void;
   onSelectDistrict: (district: string) => void;
 }
 
 export function Footer({
-  onOpenGitHubGuide,
-  onOpenMortgage,
   onOpenAddListing,
   onSelectDistrict,
 }: FooterProps) {
@@ -30,16 +26,6 @@ export function Footer({
             <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
               Современный архитектурный портал недвижимости Республики Беларусь. Все цены, метраж, планировки и условия соответствуют стандартам каталога realt.by.
             </p>
-            <div className="flex items-center gap-3 pt-2">
-              <button
-                type="button"
-                onClick={onOpenGitHubGuide}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-emerald-400 text-xs border border-slate-700 transition-colors cursor-pointer"
-              >
-                <Globe className="w-3.5 h-3.5" />
-                <span>Инструкция для GitHub Pages</span>
-              </button>
-            </div>
           </div>
 
           {/* Districts Col */}
@@ -73,15 +59,6 @@ export function Footer({
               <li>
                 <button
                   type="button"
-                  onClick={onOpenMortgage}
-                  className="hover:text-white transition-colors cursor-pointer"
-                >
-                  Кредитный калькулятор
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
                   onClick={onOpenAddListing}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
@@ -91,11 +68,10 @@ export function Footer({
               <li>
                 <button
                   type="button"
-                  onClick={onOpenGitHubGuide}
-                  className="hover:text-white transition-colors cursor-pointer flex items-center gap-1"
+                  onClick={scrollToTop}
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
-                  <span>Деплой на GitHub</span>
-                  <HelpCircle className="w-3 h-3 text-emerald-400" />
+                  Каталог проверенных объектов
                 </button>
               </li>
             </ul>

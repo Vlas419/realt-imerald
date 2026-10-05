@@ -10,11 +10,10 @@ import {
   Phone,
   Clock,
   Sparkles,
-  Calculator,
   Send,
 } from 'lucide-react';
 import { Property, Currency } from '../types/property';
-import { formatPrice, formatPricePerMeter, convertPrice } from '../utils/formatters';
+import { formatPrice, formatPricePerMeter } from '../utils/formatters';
 
 interface PropertyDetailModalProps {
   property: Property | null;
@@ -24,7 +23,6 @@ interface PropertyDetailModalProps {
   onToggleFavorite: (id: string) => void;
   onToggleCompare: (id: string) => void;
   onClose: () => void;
-  onOpenMortgageWithPrice: (priceUSD: number) => void;
 }
 
 export function PropertyDetailModal({
@@ -35,7 +33,6 @@ export function PropertyDetailModal({
   onToggleFavorite,
   onToggleCompare,
   onClose,
-  onOpenMortgageWithPrice,
 }: PropertyDetailModalProps) {
   if (!property) return null;
 
@@ -55,16 +52,6 @@ export function PropertyDetailModal({
     property.dealType === 'sale'
       ? formatPricePerMeter(property.priceUSD, property.totalArea, currency)
       : null;
-
-  // Approximate monthly mortgage calculation in selected currency
-  const convertedPrice = convertPrice(property.priceUSD, currency);
-  const loanAmount = convertedPrice * 0.8; // 80% loan
-  const monthlyRate = 0.145 / 12; // 14.5% annual
-  const months = 240; // 20 years
-  const approxMonthly = Math.round(
-    (loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, months))) /
-      (Math.pow(1 + monthlyRate, months) - 1)
-  );
 
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -189,27 +176,6 @@ export function PropertyDetailModal({
                 )}
               </div>
             </div>
-
-            {property.dealType === 'sale' && (
-              <div className="flex items-center gap-4 bg-white px-4 py-3 rounded-lg border border-slate-200">
-                <div className="p-2 bg-emerald-50 text-emerald-600 rounded-md">
-                  <Calculator className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500">Кредит от банков РБ</p>
-                  <p className="font-mono text-sm font-bold text-slate-900 tabular-nums">
-                    от {new Intl.NumberFormat('ru-RU').format(approxMonthly)} {currency}/мес
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => onOpenMortgageWithPrice(property.priceUSD)}
-                  className="ml-auto text-xs font-semibold text-emerald-700 hover:text-emerald-800 hover:underline cursor-pointer"
-                >
-                  Рассчитать
-                </button>
-              </div>
-            )}
           </div>
 
           {/* Specifications Table */}

@@ -4,11 +4,9 @@ import { Hero } from './components/Hero';
 import { FilterBar } from './components/FilterBar';
 import { PropertyCard } from './components/PropertyCard';
 import { PropertyDetailModal } from './components/PropertyDetailModal';
-import { MortgageCalculatorModal } from './components/MortgageCalculatorModal';
 import { CompareModal } from './components/CompareModal';
 import { InteractiveMap } from './components/InteractiveMap';
 import { AddListingModal } from './components/AddListingModal';
-import { GitHubPagesGuideModal } from './components/GitHubPagesGuideModal';
 import { Footer } from './components/Footer';
 import { INITIAL_PROPERTIES } from './data/properties';
 import { Property, Currency, FilterState, DealType, PropertyCategory } from './types/property';
@@ -44,11 +42,8 @@ export default function App() {
 
   // Modals state
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
-  const [isMortgageOpen, setIsMortgageOpen] = useState(false);
-  const [mortgageInitialPrice, setMortgageInitialPrice] = useState<number | undefined>(undefined);
   const [isCompareOpen, setIsCompareOpen] = useState(false);
   const [isAddListingOpen, setIsAddListingOpen] = useState(false);
-  const [isGitHubGuideOpen, setIsGitHubGuideOpen] = useState(false);
   const [showingFavoritesOnly, setShowingFavoritesOnly] = useState(false);
 
   // Filters State
@@ -96,12 +91,6 @@ export default function App() {
   // Add listing
   const handleAddProperty = (newProp: Property) => {
     setProperties((prev) => [newProp, ...prev]);
-  };
-
-  // Open mortgage modal for a specific price
-  const handleOpenMortgageWithPrice = (priceUSD: number) => {
-    setMortgageInitialPrice(priceUSD);
-    setIsMortgageOpen(true);
   };
 
   // Filter and sort items
@@ -195,11 +184,6 @@ export default function App() {
         }}
         onOpenCompare={() => setIsCompareOpen(true)}
         onOpenAddListing={() => setIsAddListingOpen(true)}
-        onOpenMortgage={() => {
-          setMortgageInitialPrice(undefined);
-          setIsMortgageOpen(true);
-        }}
-        onOpenGitHubGuide={() => setIsGitHubGuideOpen(true)}
         onScrollToCatalog={() => {
           setShowingFavoritesOnly(false);
           scrollToCatalog();
@@ -349,41 +333,11 @@ export default function App() {
               )}
             </>
           )}
-
-          {/* Quick Mortgage Teaser Section */}
-          <div className="mt-16 bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
-            <div className="space-y-2 max-w-xl">
-              <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">
-                Финансовый сервис
-              </span>
-              <h3 className="font-display text-xl sm:text-2xl font-bold leading-snug">
-                Рассчитайте ежемесячный платёж по кредиту онлайн
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Интеграция с официальными программами Беларусбанка, Белгазпромбанка и Приорбанка с автоматическим подсчётом требуемого семейного дохода.
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={() => {
-                setMortgageInitialPrice(undefined);
-                setIsMortgageOpen(true);
-              }}
-              className="px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl transition-colors shadow-lg shrink-0 cursor-pointer"
-            >
-              Открыть ипотечный калькулятор
-            </button>
-          </div>
         </div>
       </main>
 
       {/* Footer */}
       <Footer
-        onOpenGitHubGuide={() => setIsGitHubGuideOpen(true)}
-        onOpenMortgage={() => {
-          setMortgageInitialPrice(undefined);
-          setIsMortgageOpen(true);
-        }}
         onOpenAddListing={() => setIsAddListingOpen(true)}
         onSelectDistrict={(district) => {
           setFilters((prev) => ({ ...prev, district }));
@@ -400,17 +354,6 @@ export default function App() {
         onToggleFavorite={handleToggleFavorite}
         onToggleCompare={handleToggleCompare}
         onClose={() => setSelectedProperty(null)}
-        onOpenMortgageWithPrice={(priceUSD) => {
-          handleOpenMortgageWithPrice(priceUSD);
-        }}
-      />
-
-      {/* Mortgage Calculator Modal */}
-      <MortgageCalculatorModal
-        isOpen={isMortgageOpen}
-        onClose={() => setIsMortgageOpen(false)}
-        currency={currency}
-        initialPriceUSD={mortgageInitialPrice}
       />
 
       {/* Comparison Modal */}
@@ -429,12 +372,6 @@ export default function App() {
         isOpen={isAddListingOpen}
         onClose={() => setIsAddListingOpen(false)}
         onAddProperty={handleAddProperty}
-      />
-
-      {/* GitHub Pages Setup Guide Modal */}
-      <GitHubPagesGuideModal
-        isOpen={isGitHubGuideOpen}
-        onClose={() => setIsGitHubGuideOpen(false)}
       />
     </div>
   );
