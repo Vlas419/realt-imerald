@@ -1,0 +1,6 @@
+{
+  "name": "Realt Neo — Портал недвижимости",
+  "description": "Современный архитектурный портал недвижимости с базой квартир, домов и цен с realt.by, калькулятором кредита и поддержкой GitHub Pages.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
