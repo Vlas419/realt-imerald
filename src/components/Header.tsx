@@ -13,6 +13,7 @@ interface HeaderProps {
   onOpenAddListing: () => void;
   onScrollToCatalog: () => void;
   onScrollToMap: () => void;
+  onScrollToFacts: () => void;
 }
 
 export function Header({
@@ -25,6 +26,7 @@ export function Header({
   onOpenAddListing,
   onScrollToCatalog,
   onScrollToMap,
+  onScrollToFacts,
 }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -42,7 +44,7 @@ export function Header({
             className="flex items-center shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-md"
             aria-label="Realt — главная страница"
           >
-            <RealtLogo />
+            <RealtLogo theme="light" />
           </a>
 
           {/* Zone 2: nav links, clean portal navigation */}
@@ -58,6 +60,12 @@ export function Header({
               className="hover:text-slate-950 transition-colors cursor-pointer whitespace-nowrap"
             >
               Карта объектов
+            </button>
+            <button
+              onClick={onScrollToFacts}
+              className="hover:text-slate-950 transition-colors cursor-pointer whitespace-nowrap"
+            >
+              Факты и отзывы
             </button>
             <button
               onClick={onOpenFavorites}
@@ -152,6 +160,15 @@ export function Header({
             className="block w-full text-left py-2 text-slate-700 hover:text-slate-950"
           >
             Интерактивная карта
+          </button>
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onScrollToFacts();
+            }}
+            className="block w-full text-left py-2 text-slate-700 hover:text-slate-950"
+          >
+            Факты о компании и отзывы
           </button>
           <button
             onClick={() => {

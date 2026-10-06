@@ -171,15 +171,15 @@ export function Hero({ onSearch, onSelectPreset, onOpenAdvancedFilters }: HeroPr
           </div>
           <div>
             <p className="font-mono text-2xl font-bold text-white tabular-nums">3.28</p>
-            <p className="text-xs text-slate-400 mt-0.5">Курс пересчета BYN/$</p>
+            <p className="text-xs text-slate-400 mt-0.5">Курс пересчета BYN/ €</p>
           </div>
           <div>
             <p className="font-mono text-2xl font-bold text-white tabular-nums">100%</p>
             <p className="text-xs text-slate-400 mt-0.5">Проверка цены за м²</p>
           </div>
           <div>
-            <p className="font-mono text-2xl font-bold text-emerald-400 tabular-nums">GH Pages</p>
-            <p className="text-xs text-slate-400 mt-0.5">Готово к хостингу</p>
+            <p className="font-mono text-2xl font-bold text-emerald-400 tabular-nums">24 / 7</p>
+            <p className="text-xs text-slate-400 mt-0.5">Обновление объявлений</p>
           </div>
         </div>
       </div>

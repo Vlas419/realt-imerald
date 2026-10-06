@@ -7,6 +7,7 @@ import { PropertyDetailModal } from './components/PropertyDetailModal';
 import { CompareModal } from './components/CompareModal';
 import { InteractiveMap } from './components/InteractiveMap';
 import { AddListingModal } from './components/AddListingModal';
+import { FactsAndSocialProof } from './components/FactsAndSocialProof';
 import { Footer } from './components/Footer';
 import { INITIAL_PROPERTIES } from './data/properties';
 import { Property, Currency, FilterState, DealType, PropertyCategory } from './types/property';
@@ -62,6 +63,7 @@ export default function App() {
 
   const catalogRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
+  const factsRef = useRef<HTMLDivElement>(null);
 
   const scrollToCatalog = () => {
     catalogRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -70,6 +72,10 @@ export default function App() {
   const scrollToMap = () => {
     setViewMode('map');
     mapRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToFacts = () => {
+    factsRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   // Toggle favorite
@@ -189,6 +195,7 @@ export default function App() {
           scrollToCatalog();
         }}
         onScrollToMap={scrollToMap}
+        onScrollToFacts={scrollToFacts}
       />
 
       {/* Hero Section */}
@@ -335,6 +342,11 @@ export default function App() {
           )}
         </div>
       </main>
+
+      {/* Screen 3: Блок фактов (50/50: продукт / компания) и Social Proof (отзывы, рейтинги, сертификаты) */}
+      <div ref={factsRef}>
+        <FactsAndSocialProof />
+      </div>
 
       {/* Footer */}
       <Footer

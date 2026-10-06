@@ -1,8 +1,11 @@
 interface RealtLogoProps {
   className?: string;
+  theme?: 'light' | 'dark';
 }
 
-export function RealtLogo({ className = 'h-7' }: RealtLogoProps) {
+export function RealtLogo({ className = '', theme = 'light' }: RealtLogoProps) {
+  const isDark = theme === 'dark';
+
   return (
     <div className={`flex items-center gap-2 select-none ${className}`}>
       {/* Realt geometric architectural icon */}
@@ -21,12 +24,21 @@ export function RealtLogo({ className = 'h-7' }: RealtLogoProps) {
         <circle cx="16" cy="17" r="2.5" fill="#10B981" />
       </svg>
 
-      {/* Brand Wordmark */}
-      <div className="flex items-baseline">
-        <span className="font-display text-xl font-bold tracking-tight text-slate-900">
+      {/* Brand Wordmark - proportional, authentic, crisp */}
+      <div className="flex items-baseline leading-none">
+        <span
+          className={`font-sans text-xl font-extrabold tracking-tight transition-colors ${
+            isDark ? 'text-white' : 'text-slate-900'
+          }`}
+          style={{ letterSpacing: '-0.03em' }}
+        >
           realt
         </span>
-        <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 ml-0.5 mb-1" />
+        <span
+          className={`inline-block w-1.5 h-1.5 rounded-full ml-0.5 mb-0.5 ${
+            isDark ? 'bg-emerald-400' : 'bg-emerald-500'
+          }`}
+        />
       </div>
     </div>
   );

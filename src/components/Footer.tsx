@@ -21,7 +21,7 @@ export function Footer({
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2">
-              <RealtLogo className="text-white brightness-125" />
+              <RealtLogo theme="dark" />
             </div>
             <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
               Современный архитектурный портал недвижимости Республики Беларусь. Все цены, метраж, планировки и условия соответствуют стандартам каталога realt.by.
@@ -101,7 +101,7 @@ export function Footer({
 
         {/* Bottom copyright row */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© {new Date().getFullYear()} Realt Neo. Контент и структура вдохновлены каталогом realt.by.</p>
+          <p>© {new Date().getFullYear()} Realt Imerald. Контент и структура вдохновлены каталогом realt.by.</p>
 
           <button
             type="button"
