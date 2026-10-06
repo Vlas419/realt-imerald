@@ -34,33 +34,33 @@ export function LeadMagnetAndContacts() {
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-wider mb-4">
                 <Sparkles className="w-3.5 h-3.5" />
-                Бесплатный гид покупателя
+                Закрытый инвест-каталог • Доходность до 14.2% годовых
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
-                Закрытая подборка ТОП-15 квартир Минска с ценой ниже рынка на 7–12%
+                ТОП-15 инвестиционных объектов Минска с ценой ниже рынка на 7–12%
               </h2>
 
               <p className="mt-3 text-sm text-slate-300 leading-relaxed max-w-xl">
-                Получите актуальный PDF-каталог проверенных объектов с юридической чистотой, планировками и анализом инвестиционной привлекательности от аналитиков Realt Imerald.
+                Эксклюзивный PDF-каталог ликвидных квартир и коммерческих помещений с готовой финансовой моделью окупаемости (Cap Rate), расчётом арендного потока и 100% юридической экспертизой.
               </p>
 
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Только реальные кадастровые номера</span>
+                  <span>Расчёт доходности и ROI (9.8% – 14.2% годовых)</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Обновление каждые 24 часа</span>
+                  <span>Дисконт от срочных продавцов и застройщиков</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Без скрытых агентских комиссий</span>
+                  <span>Проверенная юридическая чистота по ЕГРНИ</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Мгновенная отправка в мессенджер</span>
+                  <span>Мгновенный PDF-отчёт в выбранный мессенджер</span>
                 </div>
               </div>
             </div>
@@ -115,7 +115,7 @@ export function LeadMagnetAndContacts() {
                       className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold uppercase tracking-wider rounded-xl transition-colors shadow-lg cursor-pointer shrink-0"
                     >
                       <FileDown className="w-4 h-4" />
-                      <span>Получить каталог</span>
+                      <span>Получить инвест-каталог (PDF)</span>
                     </button>
                   </div>
                   <p className="text-[11px] text-slate-500">
