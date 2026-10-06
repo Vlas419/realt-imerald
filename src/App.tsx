@@ -8,6 +8,7 @@ import { CompareModal } from './components/CompareModal';
 import { InteractiveMap } from './components/InteractiveMap';
 import { AddListingModal } from './components/AddListingModal';
 import { FactsAndSocialProof } from './components/FactsAndSocialProof';
+import { LeadMagnetAndContacts } from './components/LeadMagnetAndContacts';
 import { Footer } from './components/Footer';
 import { INITIAL_PROPERTIES } from './data/properties';
 import { Property, Currency, FilterState, DealType, PropertyCategory } from './types/property';
@@ -348,7 +349,10 @@ export default function App() {
         <FactsAndSocialProof />
       </div>
 
-      {/* Footer */}
+      {/* Screen 4: Лид-магнит и Блок контактов */}
+      <LeadMagnetAndContacts />
+
+      {/* Footer / Подвал */}
       <Footer
         onOpenAddListing={() => setIsAddListingOpen(true)}
         onSelectDistrict={(district) => {
