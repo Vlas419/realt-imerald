@@ -120,7 +120,18 @@ export function Header({
             {/* Primary Action Button */}
             <button
               type="button"
-              onClick={onOpenAddListing}
+              id="cta-header-listing"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dataLayer = window.dataLayer || [];
+                  window.dataLayer.push({
+                    event: 'cta_click',
+                    click_id: 'cta-header-listing',
+                    cta_label: 'Подать объявление',
+                  });
+                }
+                onOpenAddListing();
+              }}
               className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-slate-900 rounded-lg hover:bg-slate-800 transition-colors whitespace-nowrap shadow-sm cursor-pointer"
             >
               <PlusCircle className="w-3.5 h-3.5 text-emerald-400" />

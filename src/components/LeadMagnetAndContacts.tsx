@@ -20,6 +20,17 @@ export function LeadMagnetAndContacts() {
     e.preventDefault();
     if (!phone.trim()) return;
     setSubmitted(true);
+
+    // Push form submission event to GTM dataLayer
+    if (typeof window !== 'undefined') {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'form_send',
+        form_id: 'lead-form',
+        form_name: 'Инвест-каталог ТОП-15',
+        messenger: messenger,
+      });
+    }
   };
 
   return (
@@ -78,7 +89,7 @@ export function LeadMagnetAndContacts() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form id="lead-form" name="lead-form" onSubmit={handleSubmit} className="space-y-4">
                   {/* Выбор мессенджера */}
                   <div className="flex items-center gap-2">
                     <span className="text-xs text-slate-400 mr-1">Куда отправить:</span>
@@ -112,6 +123,7 @@ export function LeadMagnetAndContacts() {
                     </div>
                     <button
                       type="submit"
+                      id="lead-submit-btn"
                       className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold uppercase tracking-wider rounded-xl transition-colors shadow-lg cursor-pointer shrink-0"
                     >
                       <FileDown className="w-4 h-4" />
