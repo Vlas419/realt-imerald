@@ -30,14 +30,42 @@
       })(window,document,'script','dataLayer','GTM-XXXXXXX');
     </script>
     <!-- End Google Tag Manager -->
-    <script type="module" crossorigin src="./assets/index-CL9ToZQA.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CLiEzSfu.css">
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+      var ymId = 'XXXXXXXX';
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var customYm = params.get('ym') || localStorage.getItem('ym_counter_id');
+        if (customYm) ymId = customYm;
+      } catch(e) {}
+
+      ym(ymId, "init", {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true
+      });
+    </script>
+    <!-- /Yandex.Metrika counter -->
+    <script type="module" crossorigin src="./assets/index-CJDGPHwV.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B5BZYqAs.css">
   </head>
   <body class="bg-[#F8F9FA] text-[#111827] antialiased selection:bg-emerald-500 selection:text-white">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Yandex.Metrika (noscript) -->
+    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika (noscript) -->
     <div id="root"></div>
   </body>
 </html>
