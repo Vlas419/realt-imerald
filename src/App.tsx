@@ -9,7 +9,6 @@ import { InteractiveMap } from './components/InteractiveMap';
 import { AddListingModal } from './components/AddListingModal';
 import { FactsAndSocialProof } from './components/FactsAndSocialProof';
 import { LeadMagnetAndContacts } from './components/LeadMagnetAndContacts';
-import { AnalyticsHelper } from './components/AnalyticsHelper';
 import { Footer } from './components/Footer';
 import { INITIAL_PROPERTIES } from './data/properties';
 import { Property, Currency, FilterState, DealType, PropertyCategory } from './types/property';
@@ -390,9 +389,6 @@ export default function App() {
         onClose={() => setIsAddListingOpen(false)}
         onAddProperty={handleAddProperty}
       />
-
-      {/* GTM & GA4 Inspector Tool for Assignment / Testing */}
-      <AnalyticsHelper />
     </div>
   );
 }

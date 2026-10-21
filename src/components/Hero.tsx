@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Search, MapPin, SlidersHorizontal, ArrowRight } from 'lucide-react';
 import heroMinskImage from '../assets/images/hero_minsk_architecture_1791211852989.jpg';
 import { DealType, PropertyCategory } from '../types/property';
+import { trackGoal } from '../utils/analytics';
 
 interface HeroProps {
   onSearch: (filters: {
@@ -132,14 +133,10 @@ export function Hero({ onSearch, onSelectPreset, onOpenAdvancedFilters }: HeroPr
                 type="submit"
                 id="cta-button"
                 onClick={() => {
-                  if (typeof window !== 'undefined') {
-                    window.dataLayer = window.dataLayer || [];
-                    window.dataLayer.push({
-                      event: 'cta_click',
-                      click_id: 'cta-button',
-                      cta_label: 'Найти',
-                    });
-                  }
+                  trackGoal('cta_click', {
+                    click_id: 'cta-button',
+                    cta_label: 'Найти',
+                  });
                 }}
                 className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold rounded-xl transition-colors shadow-md cursor-pointer shrink-0"
               >

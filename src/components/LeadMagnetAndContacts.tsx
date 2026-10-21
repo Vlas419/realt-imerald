@@ -10,6 +10,7 @@ import {
   Sparkles,
   MessageSquare,
 } from 'lucide-react';
+import { trackGoal } from '../utils/analytics';
 
 export function LeadMagnetAndContacts() {
   const [phone, setPhone] = useState('');
@@ -21,15 +22,32 @@ export function LeadMagnetAndContacts() {
     if (!phone.trim()) return;
     setSubmitted(true);
 
-    // Push form submission event to GTM dataLayer
-    if (typeof window !== 'undefined') {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'form_send',
-        form_id: 'lead-form',
-        form_name: 'Инвест-каталог ТОП-15',
-        messenger: messenger,
-      });
+    // Track goal for both GTM and Yandex Metrika
+    trackGoal('form_send', {
+      form_id: 'lead-form',
+      form_name: 'Инвест-каталог ТОП-15',
+      messenger: messenger,
+    });
+
+    // Update URL to /thanks for Metrika pageview goal (Goal 3)
+    try {
+      if (window.history && window.history.pushState) {
+        const thanksUrl = window.location.pathname.replace(/\/$/, '') + '/thanks';
+        window.history.pushState({ page: 'thanks' }, '', thanksUrl);
+
+        // Notify Metrika of virtual pageview / hit if active
+        const win = window as any;
+        if (typeof win.ym === 'function') {
+          Object.keys(win).forEach((k) => {
+            const match = k.match(/^yaCounter(\d+)$/);
+            if (match && match[1]) {
+              win.ym(match[1], 'hit', thanksUrl);
+            }
+          });
+        }
+      }
+    } catch (err) {
+      // ignore
     }
   };
 

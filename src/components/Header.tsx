@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Heart, Scale, PlusCircle, Menu, X } from 'lucide-react';
 import { RealtLogo } from './RealtLogo';
 import { Currency } from '../types/property';
+import { trackGoal } from '../utils/analytics';
 
 interface HeaderProps {
   currency: Currency;
@@ -122,14 +123,10 @@ export function Header({
               type="button"
               id="cta-header-listing"
               onClick={() => {
-                if (typeof window !== 'undefined') {
-                  window.dataLayer = window.dataLayer || [];
-                  window.dataLayer.push({
-                    event: 'cta_click',
-                    click_id: 'cta-header-listing',
-                    cta_label: 'Подать объявление',
-                  });
-                }
+                trackGoal('cta_click', {
+                  click_id: 'cta-header-listing',
+                  cta_label: 'Подать объявление',
+                });
                 onOpenAddListing();
               }}
               className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-slate-900 rounded-lg hover:bg-slate-800 transition-colors whitespace-nowrap shadow-sm cursor-pointer"

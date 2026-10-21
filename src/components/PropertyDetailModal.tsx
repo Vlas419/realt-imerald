@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { Property, Currency } from '../types/property';
 import { formatPrice, formatPricePerMeter } from '../utils/formatters';
+import { trackGoal } from '../utils/analytics';
 
 interface PropertyDetailModalProps {
   property: Property | null;
@@ -58,15 +59,11 @@ export function PropertyDetailModal({
     if (!clientName || !clientPhone) return;
     setBookingSuccess(true);
 
-    if (typeof window !== 'undefined') {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'form_send',
-        form_id: 'booking-form',
-        form_name: 'Бронирование просмотра',
-        property_id: property.id,
-      });
-    }
+    trackGoal('form_send', {
+      form_id: 'booking-form',
+      form_name: 'Бронирование просмотра',
+      property_id: property.id,
+    });
   };
 
   return (
